@@ -1,0 +1,41 @@
+[
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (af-ZA, AdriNeural)",
+    "ShortName": "af-ZA-AdriNeural",
+    "Gender": "Female",
+    "Locale": "af-ZA",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Adri Online (Natural) - Afrikaans (South Africa)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": ["General"],
+      "VoicePersonalities": ["Friendly", "Positive"]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AndrewNeural)",
+    "ShortName": "en-US-AndrewNeural",
+    "Gender": "Male",
+    "Locale": "en-US",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Andrew Online (Natural) - English (United States)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": ["Conversation", "Copilot"],
+      "VoicePersonalities": ["Warm", "Confident", "Authentic", "Honest"]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AndrewMultilingualNeural)",
+    "ShortName": "en-US-AndrewMultilingualNeural",
+    "Gender": "Male",
+    "Locale": "en-US",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft AndrewMultilingual Online (Natural) - English (United States)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": ["Conversation", "Copilot"],
+      "VoicePersonalities": ["Warm", "Confident", "Authentic", "Honest"]
+    }
+  }
+]

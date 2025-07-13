@@ -1,0 +1,131 @@
+{
+  "validEdgeTTSSSML": [
+    {
+      "name": "Basic English",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"><voice name=\"Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)\">Hello World</voice></speak>",
+      "language": "en-US",
+      "voice": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+      "description": "Basic Edge TTS SSML with required namespace and Microsoft voice format"
+    },
+    {
+      "name": "With Prosody Parameters",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"><voice name=\"Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)\"><prosody rate=\"+50%\" pitch=\"-10%\" volume=\"+20%\">Hello World with prosody</prosody></voice></speak>",
+      "language": "en-US",
+      "voice": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+      "description": "Edge TTS SSML with relative percentage prosody values"
+    },
+    {
+      "name": "Named Prosody Values",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"><voice name=\"Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)\"><prosody rate=\"fast\" pitch=\"high\" volume=\"loud\">Hello with named values</prosody></voice></speak>",
+      "language": "en-US",
+      "voice": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+      "description": "Edge TTS SSML with named prosody values"
+    },
+    {
+      "name": "French Voice",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"fr-FR\"><voice name=\"Microsoft Server Speech Text to Speech Voice (fr-FR, DeniseNeural)\">Bonjour le monde</voice></speak>",
+      "language": "fr-FR",
+      "voice": "Microsoft Server Speech Text to Speech Voice (fr-FR, DeniseNeural)",
+      "description": "Edge TTS SSML with French language and voice"
+    },
+    {
+      "name": "Nested Voice and Prosody",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"en-US\"><voice name=\"Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)\">Normal speech <prosody rate=\"fast\" volume=\"loud\">followed by fast and loud speech</prosody> then back to normal.</voice></speak>",
+      "language": "en-US",
+      "voice": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+      "description": "Edge TTS SSML with nested prosody within voice element"
+    }
+  ],
+  "invalidEdgeTTSSSML": [
+    {
+      "name": "Missing Namespace",
+      "ssml": "<speak version='1.0' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)'>Hello World</voice></speak>",
+      "error": "Missing required xmlns attribute",
+      "description": "SSML missing required Edge TTS namespace"
+    },
+    {
+      "name": "Wrong Voice Format",
+      "ssml": "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='AriaNeural'>Hello World</voice></speak>",
+      "error": "Incorrect voice name format",
+      "description": "Voice name not in Microsoft Edge TTS format"
+    },
+    {
+      "name": "Missing Version",
+      "ssml": "<speak xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)'>Hello World</voice></speak>",
+      "error": "Missing required version=\"1.0\" attribute",
+      "description": "SSML missing required version attribute"
+    }
+  ],
+  "edgeTTSProsodyValues": {
+    "rateValues": {
+      "relative": [
+        "+50%",
+        "-25%",
+        "+100%",
+        "-50%"
+      ],
+      "named": [
+        "x-slow",
+        "slow",
+        "medium",
+        "fast",
+        "x-fast"
+      ]
+    },
+    "pitchValues": {
+      "relative": [
+        "+10Hz",
+        "-5Hz",
+        "+50%",
+        "-25%"
+      ],
+      "named": [
+        "x-low",
+        "low",
+        "medium",
+        "high",
+        "x-high"
+      ]
+    },
+    "volumeValues": {
+      "relative": [
+        "+50%",
+        "-25%",
+        "+100%",
+        "-50%"
+      ],
+      "named": [
+        "silent",
+        "x-soft",
+        "soft",
+        "medium",
+        "loud",
+        "x-loud"
+      ]
+    }
+  },
+  "characterEscapingExamples": [
+    {
+      "input": "Hello & \"World\" <test> 'quote'",
+      "escaped": "Hello &amp; &quot;World&quot; &lt;test&gt; &apos;quote&apos;",
+      "description": "XML character escaping for Edge TTS compatibility"
+    },
+    {
+      "input": "Price: $100 & tax",
+      "escaped": "Price: $100 &amp; tax",
+      "description": "Ampersand escaping in financial content"
+    },
+    {
+      "input": "Code: <script>alert('hello')</script>",
+      "escaped": "Code: &lt;script&gt;alert(&apos;hello&apos;)&lt;/script&gt;",
+      "description": "Script tag escaping for security"
+    }
+  ],
+  "textLengthExamples": {
+    "shortText": "Hello World",
+    "mediumText": "This is a medium length text that should be well within the Edge TTS character limit of approximately 1000 characters per request.",
+    "longText": "This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests. This is a very long text that exceeds the recommended character limit for Edge TTS requests.",
+    "maxLengthText": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "exceedsLimitText": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  }
+}
