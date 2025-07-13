@@ -1,9 +1,10 @@
 # expo-edge-speech
 *Microsoft Edge text-to-speech for Expo and React Native*
 
-![Version](https://img.shields.io/npm/v/expo-edge-speech)
-![License](https://img.shields.io/npm/l/expo-edge-speech)
-![Downloads](https://img.shields.io/npm/dm/expo-edge-speech)
+[![Version](https://img.shields.io/npm/v/expo-edge-speech)](https://www.npmjs.com/package/expo-edge-speech)
+[![License](https://img.shields.io/npm/l/expo-edge-speech)](https://github.com/oovz/expo-edge-speech/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/expo-edge-speech)](https://www.npmjs.com/package/expo-edge-speech)
+[![GitHub Stars](https://img.shields.io/github/stars/oovz/expo-edge-speech?style=social)](https://github.com/oovz/expo-edge-speech)
 
 ## Description
 
