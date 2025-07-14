@@ -125,7 +125,8 @@ await Speech.speak('Parameters are automatically validated', {
 
 ```typescript
 // Comprehensive event handling for speech monitoring
-await Speech.speak('Text with complete event monitoring', {
+const text = 'Text with complete event monitoring';
+await Speech.speak(text, {
   voice: 'en-US-AriaNeural',
   onStart: () => {
     console.log('🎵 Speech synthesis started');
@@ -140,7 +141,9 @@ await Speech.speak('Text with complete event monitoring', {
     // Handle error gracefully
   },
   onBoundary: (boundary) => {
-    console.log(`📍 Word: "${boundary.text}" at position ${boundary.charIndex}`);
+    // Extract the current word from the original text
+    const word = text.slice(boundary.charIndex, boundary.charIndex + boundary.charLength);
+    console.log(`📍 Speaking word: "${word}" at position ${boundary.charIndex}`);
     // Use for real-time highlighting or progress tracking
   }
 });
@@ -497,6 +500,7 @@ For production applications, use a configuration optimized for reliability and p
 
 ```typescript
 import { configure } from 'expo-edge-speech';
+import { InterruptionModeIOS, InterruptionModeAndroid } from 'expo-av';
 
 configure({
   network: {
@@ -518,12 +522,12 @@ configure({
       ios: {
         playsInSilentModeIOS: true,
         staysActiveInBackground: false,
-        interruptionModeIOS: 1
+        interruptionModeIOS: InterruptionModeIOS.DoNotMix
       },
       android: {
         shouldDuckAndroid: true,
         staysActiveInBackground: false,
-        interruptionModeAndroid: 1
+        interruptionModeAndroid: InterruptionModeAndroid.DoNotMix
       }
     }
   },
@@ -534,7 +538,7 @@ configure({
 });
 ```
 
-For detailed configuration options, see the [Configure API Guide](./configure-api.md).
+For detailed configuration options, see the [Configuration Guide](./configuration.md).
 
 ### Multilingual Voice Usage
 
@@ -1446,7 +1450,7 @@ function SpeechControls() {
 
 - **[API Reference](./api-reference.md)** - Complete function documentation and parameters
 - **[Configuration Guide](./configuration.md)** - Setup and configuration options
-- **[Configure API](./configure-api.md)** - Advanced configuration patterns
+- **[Configuration Guide](./configuration.md)** - Advanced configuration patterns
 - **[Platform Considerations](./platform-considerations.md)** - Platform-specific requirements and optimizations
 - **[TypeScript Interfaces](./typescript-interfaces.md)** - Type definitions and interfaces
 
