@@ -1,3 +1,9 @@
+---
+id: configuration
+title: Configuration Guide
+description: Comprehensive guidance on configuring expo-edge-speech for different use cases
+---
+
 # Configuration Guide
 
 This document provides comprehensive guidance on configuring expo-edge-speech for different use cases and performance requirements.

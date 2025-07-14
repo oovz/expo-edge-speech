@@ -1,3 +1,9 @@
+---
+id: platform-considerations
+title: Platform Considerations
+description: Platform-specific configurations, optimizations, and considerations for iOS and Android
+---
+
 # Platform-Specific Considerations
 
 This document covers platform-specific configurations, optimizations, and considerations for expo-edge-speech across iOS and Android platforms.
