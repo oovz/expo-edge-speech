@@ -61,8 +61,8 @@ jobs:
 
   # Deployment job
   deploy:
-    # Only deploy on main branch pushes
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Only deploy on master branch pushes
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
