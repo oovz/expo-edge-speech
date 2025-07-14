@@ -1,3 +1,9 @@
+---
+id: typescript-interfaces
+title: TypeScript Interfaces
+description: Comprehensive TypeScript interface documentation for expo-edge-speech
+---
+
 # TypeScript Interfaces
 
 This document provides comprehensive TypeScript interface documentation for expo-edge-speech, ensuring full type safety and excellent developer experience.

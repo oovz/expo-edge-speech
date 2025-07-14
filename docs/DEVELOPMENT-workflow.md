@@ -1,3 +1,9 @@
+---
+id: DEVELOPMENT-workflow
+title: Development Workflow
+description: Internal implementation details and workflow documentation for contributors
+---
+
 # Speech.speak() Workflow Documentation
 
 This document provides a comprehensive overview of the `Speech.speak()` method execution flow in expo-edge-speech, detailing the complete text-to-speech synthesis process from user call to audio playback.

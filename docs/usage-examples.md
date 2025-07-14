@@ -1,3 +1,9 @@
+---
+id: usage-examples
+title: Usage Examples
+description: Comprehensive examples and patterns for integrating text-to-speech functionality
+---
+
 # Usage Examples
 
 Comprehensive examples and patterns for integrating text-to-speech functionality in your Expo apps using expo-edge-speech.
@@ -1473,4 +1479,4 @@ function SpeechControls() {
 2. **Android**: Verify audio focus and ducking settings
 3. **Background playback**: Review platform background execution limitations
 
-For more detailed troubleshooting, see the [Configuration Guide](./configuration.md#troubleshooting).
+For more detailed troubleshooting, see the [Configuration Guide](./configuration.md#troubleshooting-common-issues).

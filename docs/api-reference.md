@@ -1,3 +1,9 @@
+---
+id: api-reference
+title: API Reference
+description: Complete documentation for all public APIs in expo-edge-speech
+---
+
 # API Reference
 
 This document provides comprehensive documentation for all public APIs in expo-edge-speech.
