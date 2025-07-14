@@ -49,6 +49,131 @@ configure({
 await speak('Configured speech');
 ```
 
+## Configuration Presets
+
+### 📱 Mobile-Optimized (Recommended)
+
+Balanced performance and battery efficiency for mobile applications:
+
+```typescript
+import { configure } from 'expo-edge-speech';
+import { InterruptionModeIOS, InterruptionModeAndroid } from 'expo-av';
+
+configure({
+  network: {
+    maxRetries: 3,
+    baseRetryDelay: 1000,
+    connectionTimeout: 8000,
+    enableDebugLogging: false
+  },
+  connection: {
+    maxConnections: 3,        // Conservative for mobile
+    poolingEnabled: true,
+    connectionTimeout: 8000,
+    circuitBreaker: {
+      failureThreshold: 3,
+      recoveryTimeout: 15000,
+      testRequestLimit: 2
+    }
+  },
+  audio: {
+    loadingTimeout: 6000,
+    autoInitializeAudioSession: true,
+    platformConfig: {
+      ios: {
+        playsInSilentModeIOS: true,
+        staysActiveInBackground: false,  // Battery-friendly
+        interruptionModeIOS: InterruptionModeIOS.DoNotMix
+      },
+      android: {
+        shouldDuckAndroid: true,
+        staysActiveInBackground: false,  // Battery-friendly
+        playThroughEarpieceAndroid: false,
+        interruptionModeAndroid: InterruptionModeAndroid.DoNotMix
+      }
+    }
+  },
+  storage: {
+    maxBufferSize: 8 * 1024 * 1024,   // 8MB for mobile
+    cleanupInterval: 20000,
+    warningThreshold: 0.75
+  },
+  voice: {
+    cacheTTL: 3600000,        // 1 hour
+    enableCaching: true
+  }
+});
+```
+
+### ⚡ High-Performance
+
+Maximum throughput for applications requiring fast synthesis:
+
+```typescript
+configure({
+  network: {
+    maxRetries: 2,
+    baseRetryDelay: 500,
+    maxRetryDelay: 3000,
+    connectionTimeout: 5000,     // Faster timeout
+    gracefulCloseTimeout: 2000
+  },
+  connection: {
+    maxConnections: 8,           // More concurrent connections
+    poolingEnabled: true,
+    connectionTimeout: 5000,
+    circuitBreaker: {
+      failureThreshold: 10,      // More tolerant
+      recoveryTimeout: 30000,
+      testRequestLimit: 5
+    }
+  },
+  storage: {
+    maxBufferSize: 32 * 1024 * 1024, // 32MB for high performance
+    cleanupInterval: 60000,
+    warningThreshold: 0.9
+  },
+  voice: {
+    cacheTTL: 7200000,          // 2 hours cache
+    enableCaching: true
+  }
+});
+```
+
+### 🐛 Development & Debug
+
+Optimized for development with detailed logging and fast failure detection:
+
+```typescript
+configure({
+  network: {
+    enableDebugLogging: true,   // Detailed network logs
+    maxRetries: 1,              // Fail fast for debugging
+    baseRetryDelay: 200,
+    connectionTimeout: 3000
+  },
+  connection: {
+    maxConnections: 2,          // Simpler connection management
+    poolingEnabled: false,      // Easier to track individual requests
+    circuitBreaker: {
+      failureThreshold: 1,      // Immediate circuit breaker
+      recoveryTimeout: 5000,
+      testRequestLimit: 1
+    }
+  },
+  voice: {
+    enableDebugLogging: true,
+    cacheTTL: 30000,            // Short cache for testing
+    enableCaching: true
+  },
+  storage: {
+    maxBufferSize: 4 * 1024 * 1024,  // 4MB for development
+    cleanupInterval: 10000,
+    warningThreshold: 0.6      // Early warnings
+  }
+});
+```
+
 ## Speech Options Configuration
 
 The most common configuration involves setting speech synthesis parameters for individual requests:
@@ -73,7 +198,7 @@ await Speech.speak('Text with full monitoring', {
   onDone: () => console.log('Speech completed'),
   onError: (error) => console.error('Speech error:', error),
   onBoundary: (boundary) => {
-    console.log(`Word: "${boundary.text}" at position ${boundary.charIndex}`);
+    console.log(`Word at position ${boundary.charIndex} (length: ${boundary.charLength})`);
   }
 });
 

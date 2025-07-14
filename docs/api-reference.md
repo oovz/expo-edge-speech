@@ -79,7 +79,7 @@ await Speech.speak('Speech with events', {
   onDone: () => console.log('Speech completed'),
   onError: (error) => console.error('Speech error:', error),
   onBoundary: (boundary) => {
-    console.log(`Word: "${boundary.text}" at ${boundary.charIndex}`);
+    console.log(`Word at position ${boundary.charIndex} (length: ${boundary.charLength})`);
   }
 });
 
@@ -529,20 +529,20 @@ const smartTextSplit = (text: string): string[] => {
 All speech parameters are automatically validated and clamped to valid ranges to ensure reliable operation:
 
 ### Rate Parameter
-- **Range:** 0.1 to 3.0 (extended range for Edge TTS)
+- **Range:** 0.0 to 2.0 (optimized for Edge TTS)
 - **Default:** 1.0 (normal speed)
 - **Behavior:** Values outside range are automatically clamped
-- **Recommended:** 0.5 to 2.0 for natural speech
+- **Recommended:** 0.5 to 1.5 for natural speech
 
 ### Pitch Parameter  
-- **Range:** 0.5 to 2.0 (optimized for Edge TTS)
+- **Range:** 0.0 to 2.0 (optimized for Edge TTS)
 - **Default:** 1.0 (normal pitch)
 - **Behavior:** Values outside range are automatically clamped
 - **Recommended:** 0.8 to 1.2 for natural variation
 
 ### Volume Parameter
-- **Range:** 0.0 to 1.0 (standard audio range)
-- **Default:** 1.0 (maximum volume)
+- **Range:** 0.0 to 2.0 (Edge TTS volume range)
+- **Default:** 1.0 (normal volume)
 - **Behavior:** Values outside range are automatically clamped
 - **Note:** System volume controls final output level
 
@@ -558,18 +558,18 @@ await Speech.speak('Normal parameters', {
 
 // Invalid parameters - automatically clamped
 await Speech.speak('Clamped parameters', {
-  rate: 5.0,    // Clamped to 3.0
-  pitch: -0.5,  // Clamped to 0.5  
-  volume: 2.0   // Clamped to 1.0
+  rate: 5.0,    // Clamped to 2.0
+  pitch: -0.5,  // Clamped to 0.0  
+  volume: 3.0   // Clamped to 2.0
 });
 
 // Parameter validation example
 const validateSpeechParams = (options: SpeechOptions) => {
   const clampedOptions = {
     ...options,
-    rate: Math.max(0.1, Math.min(3.0, options.rate || 1.0)),
-    pitch: Math.max(0.5, Math.min(2.0, options.pitch || 1.0)),
-    volume: Math.max(0.0, Math.min(1.0, options.volume || 1.0))
+    rate: Math.max(0.0, Math.min(2.0, options.rate || 1.0)),
+    pitch: Math.max(0.0, Math.min(2.0, options.pitch || 1.0)),
+    volume: Math.max(0.0, Math.min(2.0, options.volume || 1.0))
   };
   
   return clampedOptions;
@@ -726,7 +726,7 @@ await speak('Hello, configured world!');
 - **storage**: Storage service configuration (memory limits, cleanup)
 - **voice**: Voice service configuration (caching, fetching)
 
-For detailed configuration options, see the [Configure API Guide](./configure-api.md).
+For detailed configuration options, see the [Configuration Guide](./configuration.md).
 
 **Error Handling:**
 

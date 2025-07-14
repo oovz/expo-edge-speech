@@ -90,7 +90,7 @@ expo-edge-speech uses a sophisticated two-phase workflow that ensures reliable a
 - Supported in standalone apps with proper configuration
 - **Not supported in Expo Go** due to platform restrictions
 - Requires background audio capability in app.json configuration
-- See [expo-av AudioMode documentation](https://docs.expo.dev/versions/v52.0.0/sdk/audio-av/#audiomode) for implementation details
+- See [expo-av AudioMode documentation](https://docs.expo.dev/versions/latest/sdk/audio-av/#audiomode) for implementation details
 
 **Android Background Playback:**
 - Fully supported in both Expo Go and standalone apps
