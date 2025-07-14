@@ -2,17 +2,18 @@ name: Deploy Documentation to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'docs/**'
       - 'website/**'
       - '.github/workflows/deploy-docs.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'docs/**'
       - 'website/**'
       - '.github/workflows/deploy-docs.yml'
+  workflow_dispatch:
 
 # Allow one concurrent deployment
 concurrency:
